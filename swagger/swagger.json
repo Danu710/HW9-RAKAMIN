@@ -1,0 +1,145 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "User API",
+      "description": "API to manage user data"
+    },
+    "schemes": [
+      "http",
+      "https"
+    ],
+    "paths": {
+      "/users": {
+        "get": {
+          "tags": [
+            "Users"
+          ],
+          "summary": "Get a list of all users",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/User"
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Users"
+          ],
+          "summary": "Create a new user",
+          "parameters": [
+            {
+              "name": "user",
+              "in": "body",
+              "description": "User object",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/UserInput"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Created",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      },
+      "/users/{id}": {
+        "get": {
+          "tags": [
+            "Users"
+          ],
+          "summary": "Get a user by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the user",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            },
+            "404": {
+              "description": "User not found"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Users"
+          ],
+          "summary": "Update a user by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the user",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "name": "user",
+              "in": "body",
+              "description": "User object",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/UserInput"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            },
+            "404": {
+              "description": "User not found"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Users"
+          ],
+          "summary": "Delete a user by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "ID of the user",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "No content"
+            },
+            "404": {
+              "description": "User not found"
+            }
+          }
+        }
+      }
+    }
+}
+
