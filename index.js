@@ -13,10 +13,6 @@ app.use(express.json());
 app.use(UserRoute);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
-app.get("/ping", (req, res) => {
-  res.json({ ping: true });
-});
-
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });

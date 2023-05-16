@@ -2,7 +2,7 @@ import { User } from "../models/UserModel.js";
 import db from "../config/Database.js";
 
 export const getUsers = async (req, res) => {
-  const limit = req.query.limit || 10; // default limit to 10 if not provided
+  const limit = req.query.limit || 20;
   const offset = req.query.offset || 0;
   try {
     await db.authenticate();
